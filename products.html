@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North Star Bakery - Products</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="Bakery_c/bakery-logo_c.png" alt="North Star Bakery logo">
+        <h1>Our Products</h1>
+        <p>Freshly baked handmade goods for you and your family.</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact &amp; Orders</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Fresh Bakery Items</h2>
+            <p>Take a look at our daily baked goods! We use traditional recipes and local ingredients.</p>
+            <img src="Bakery_c/bakery-bread_c.png" alt="Fresh bread on display">
+        </section>
+
+        <section>
+            <h2>Our Signature Item</h2>
+            <figure>
+                <img src="Bakery_c/bakery-signature-loaf_c.png" alt="Signature sourdough bread loaf">
+                <figcaption>Our Signature Loaf - fermented for 24 hours.</figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <h2>Product Menu &amp; Price Ranges</h2>
+            <p>Note: We do not offer online checkout. Please visit our shop or use our <a href="contact.html">order form</a> to place a pre-order.</p>
+
+            <label for="category-filter">Filter by Category:</label>
+            <select id="category-filter">
+                <option value="all">All Products</option>
+                <option value="bread">Breads</option>
+                <option value="pastry">Pastries</option>
+                <option value="cake">Cakes</option>
+            </select>
+
+            <ul id="product-list">
+                <!-- JavaScript shows items here -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 North Star Bakery</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
