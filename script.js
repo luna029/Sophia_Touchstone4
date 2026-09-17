@@ -14,12 +14,10 @@ var products = [
 
 function showProducts(category) {
     var list = document.getElementById("product-list");
-    if (!list) return;
-
     list.innerHTML = "";
 
     for (var i = 0; i < products.length; i++) {
-        if (category === "all" || products[i].category === category) {
+        if (category == "all" || products[i].category == category) {
             var li = document.createElement("li");
             li.textContent = products[i].name + " - " + products[i].price;
             list.appendChild(li);
@@ -29,48 +27,37 @@ function showProducts(category) {
 
 function onFilterChange() {
     var select = document.getElementById("category-filter");
-    var choice = select.value;
-    try {
-        localStorage.setItem("myCategory", choice);
-    } catch (e) {
-        // storage disabled fallback
-    }
-    showProducts(choice);
+    localStorage.setItem("myCategory", select.value);
+    showProducts(select.value);
 }
 
 function checkForm(event) {
-    var nameInput = document.getElementById("full-name");
-    var emailInput = document.getElementById("user-email");
+    var name = document.getElementById("full-name").value;
+    var email = document.getElementById("user-email").value;
     var errorMsg = document.getElementById("error-message");
 
-    var name = nameInput ? nameInput.value : "";
-    var email = emailInput ? emailInput.value : "";
-
-    if (name === "") {
+    // 空白チェック（.trim()なしで === "" のみ判定）
+    if (name == "") {
         event.preventDefault();
-        if (errorMsg) errorMsg.textContent = "Please enter your name.";
+        errorMsg.textContent = "Please enter your name.";
         return;
     }
 
+    // メールチェック（@が含まれるかだけ判定）
     if (!email.includes("@")) {
         event.preventDefault();
-        if (errorMsg) errorMsg.textContent = "Please enter your email.";
+        errorMsg.textContent = "Please enter your email.";
         return;
     }
 
+    // 完了はalertのみ
     alert("Thank you!");
 }
 
-function init() {
+window.onload = function() {
     var select = document.getElementById("category-filter");
     if (select) {
-        var saved = null;
-        try {
-            saved = localStorage.getItem("myCategory");
-        } catch (e) {
-            // storage disabled fallback
-        }
-
+        var saved = localStorage.getItem("myCategory");
         if (saved) {
             select.value = saved;
             showProducts(saved);
@@ -84,10 +71,4 @@ function init() {
     if (form) {
         form.onsubmit = checkForm;
     }
-}
-
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-} else {
-    init();
-}
+};
